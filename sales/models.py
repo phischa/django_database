@@ -3,24 +3,24 @@ from django.db import models
 # Create your models here.
 
 class Customer(models.Model):
-    first_name = models.CharField(max_length=30, error_messages="Error", help_text="Max 30 letters!")
-    last_name = models.CharField(max_length=30, help_text="Max 30 letters!")
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
     newsletter_abo = models.BooleanField(default=False)
     email_address = models.EmailField(max_length=30, blank=True, default="")
     account = models.FloatField(blank=True, null=True)
-    slug = models.SlugField(blank=True, default="")
+    #slug = models.SlugField(blank=True, default="")
 
-    class Meta:
+    """ class Meta:
         verbose_name = "Customer"
         verbose_name_plural = "Customers"
-        ordering = ["last_name"]
+        ordering = ["last_name"] """
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
     
-    def save(self):
+    """ def save(self):
         self.account = 63537
-        return super().save()
+        return super().save() """
 
 
 class Product(models.Model):
